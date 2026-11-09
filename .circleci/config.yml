@@ -1,0 +1,1459 @@
+version: 2.1
+
+jobs:
+  strings_ne:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: inspection scope all
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; printf '%s\n' "night mode on" | sed "s|night|cell|g"; true ; } > /tmp/box/CPUindigo
+            echo "gate defualt-2: $(wc -c </tmp/box/CPUindigo) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'CPUindigo'
+  defualt-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/CPUindigo
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  OSCursor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: week 39 export
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; ps -ef | tail -n +2 | awk 'NR>1 {print $1}' | sort -r | shuf -n 5; true ; } > /tmp/box/slice.pulse.cobalt.sprite
+            echo "gate STAGE_QA: $(wc -c </tmp/box/slice.pulse.cobalt.sprite) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'slice.pulse.cobalt.sprite'
+  STAGE_QA:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/slice.pulse.cobalt.sprite
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  revert__Circle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Catalogue the lease table in a tick
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; shuf -i 1-931 -n 11 | paste -sd+; true ; } > /tmp/box/hollowDelta
+            echo "gate check-partial-release-candidate: $(wc -c </tmp/box/hollowDelta) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'hollowDelta'
+  check-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/hollowDelta
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  vNext:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: BIOS Setting Probe Pass
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; until test -e /tmp/cookie.flag; do touch /tmp/cookie.flag; done; ls -l /tmp/cookie.flag; true ; } > /tmp/box/assetguestcarrier
+            echo "gate min-push: $(wc -c </tmp/box/assetguestcarrier) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'assetguestcarrier'
+  min-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/assetguestcarrier
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  da-cd-93-e2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: URGENT rinse the culture plates
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; test ! -d /etc/skel && echo yes || echo no; true ; } > /tmp/box/backup.crisp
+            echo "gate run-partial-release-candidate: $(wc -c </tmp/box/backup.crisp) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'backup.crisp'
+  run-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  providers-send:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Receive courier pickup HOLD
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; expr length 'testing 1 2 3'; true ; } > /tmp/box/scratch-ea22e6c
+            echo "gate update-oauth: $(wc -c </tmp/box/scratch-ea22e6c) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'scratch-ea22e6c'
+  update-oauth:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/scratch-ea22e6c
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  DDEQ-15745-src:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Final welcome of the access cards
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; find /run -size 0 -print -quit 2>/dev/null | sort -r; true ; } > /tmp/box/f1ux.c0457a1.shad3r
+            echo "gate nightly-v9: $(wc -c </tmp/box/f1ux.c0457a1.shad3r) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'f1ux.c0457a1.shad3r'
+  nightly-v9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/f1ux.c0457a1.shad3r
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  box-648:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Drop the backup battery
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; mkdir -p "/var/tmp/purple3" && touch "/var/tmp/purple3"/note-{1..6}.dat && ls "/var/tmp/purple3"; true ; } > /tmp/box/0b7a340a-8014-4d33
+            echo "gate blast-off: $(wc -c </tmp/box/0b7a340a-8014-4d33) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - '0b7a340a-8014-4d33'
+  blast-off:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/0b7a340a-8014-4d33
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  ctrlrow:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: FAST encoding
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; ls -vA --ignore='*.d' | uniq; true ; } > /tmp/box/525vq
+            echo "gate victor-5: $(wc -c </tmp/box/525vq) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - '525vq'
+  victor-5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/525vq
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  pfPipePost:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Caption raw footage iteration 9
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; if [[ -w /etc/passwd ]]; then echo yes; else echo "no"; fi; true ; } > /tmp/box/meadow
+            echo "gate alice-build: $(wc -c </tmp/box/meadow) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'meadow'
+  alice-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  ember_469:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Pit stop mirroring
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; ls -1 -r . | fmt -w 60; true ; } > /tmp/box/_wip-b13c9
+            echo "gate rigel-plus: $(wc -c </tmp/box/_wip-b13c9) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - '_wip-b13c9'
+  rigel-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/_wip-b13c9
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  normalize_fork:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Prioritize poll
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; grep -n -e local /etc/hosts|sort|uniq -c; true ; } > /tmp/box/JscRjc6duuoqrLvq
+            echo "gate send-it: $(wc -c </tmp/box/JscRjc6duuoqrLvq) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'JscRjc6duuoqrLvq'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/JscRjc6duuoqrLvq
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  Sort-QueueWrapper:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Series V Stream Weapon Stats
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; getent passwd | grep 'sh$' | sort; true ; } > /tmp/box/access.log
+            echo "gate hotfix-8596: $(wc -c </tmp/box/access.log) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'access.log'
+  hotfix-8596:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/access.log
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  Option-Phone-Input:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: texturing v2 beta
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; tar czf /tmp/spring.tgz -C /etc hosts && tar -xzOf /tmp/spring.tgz hosts | head -n 3; true ; } > /tmp/box/temp_0418972
+            echo "gate vb-01: $(wc -c </tmp/box/temp_0418972) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'temp_0418972'
+  vb-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/temp_0418972
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  Pen:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Carry out a full checkpoint of the billing records
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 2 -type d -not -name 'lib*' -exec du -sh {} + 2> /dev/null | cat -n; true ; } > /tmp/box/drift
+            echo "gate green-light-go: $(wc -c </tmp/box/drift) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'drift'
+  green-light-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  su6b9n1Cl4F:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Sync with Bjorn
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; od -An -tu1 -N12 /dev/urandom | tr -s ' ' '\n' | grep . | tac | tail -n 6; true ; } > /tmp/box/sweep.north
+            echo "gate Prepare_Image3: $(wc -c </tmp/box/sweep.north) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'sweep.north'
+  Prepare_Image3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  lv:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Thereafter notify the subscribers
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; for w in $(seq 5); do printf '%02d\n' ${w}; done; true ; } > /tmp/box/URL
+            echo "gate tb-2: $(wc -c </tmp/box/URL) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'URL'
+  tb-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/URL
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  drZhang:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: touch vids v
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; tar --exclude='*.conf' -czf "/tmp/grid_v3.tgz" -C /etc profile.d && tar -tzf "/tmp/grid_v3.tgz" | head -n 1; true ; } > /tmp/box/ce84a9f17e382e097403c7475f
+            echo "gate fix-session-leak: $(wc -c </tmp/box/ce84a9f17e382e097403c7475f) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'ce84a9f17e382e097403c7475f'
+  fix-session-leak:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  dwFlagsChunkExport:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 56 sampling
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; printf '%s\n' eagle otter bear crow owl >"/tmp/client.log" && wc -l "/tmp/client.log"; true ; } > /tmp/box/md5_f8fc77fa830601f
+            echo "gate juliet-9: $(wc -c </tmp/box/md5_f8fc77fa830601f) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'md5_f8fc77fa830601f'
+  juliet-9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/md5_f8fc77fa830601f
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  iterate_revert_locked_hide:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Type Toast Message Step
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; df -P | awk '{print $1}' | grep -c .; true ; } > /tmp/box/scarletshaderslicepayload
+            echo "gate preview: $(wc -c </tmp/box/scarletshaderslicepayload) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'scarletshaderslicepayload'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/scarletshaderslicepayload
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  l1075z:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Allow 4 spare drives at once
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; ( set -o pipefail; grep -c root /etc/passwd | tee "/tmp/thread_warning_theme_2025-05-15.tmp" ) && cat "/tmp/thread_warning_theme_2025-05-15.tmp"; true ; } > /tmp/box/xx_762e1de
+            echo "gate wip-edge-reload: $(wc -c </tmp/box/xx_762e1de) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'xx_762e1de'
+  wip-edge-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/xx_762e1de
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  article_spawn_next:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Label Loading Bay Double Stack
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; printf '%s\n' swan seal zebra tiger | xargs -I{} echo "item: {}"; true ; } > /tmp/box/trace.log.21
+            echo "gate sm-alt: $(wc -c </tmp/box/trace.log.21) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'trace.log.21'
+  sm-alt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/trace.log.21
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  Grant-PatternItem:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Straight after survey the interns
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; if [ -f /etc/passwd ];then echo yes; fi; true ; } > /tmp/box/mothChromeWillowSprite
+            echo "gate all-greens: $(wc -c </tmp/box/mothChromeWillowSprite) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'mothChromeWillowSprite'
+  all-greens:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/mothChromeWillowSprite
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  Tan80:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Phase 31
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; echo 'greetings from linux' | tr -s ' '; true ; } > /tmp/box/fjordtitanscarletscarlet
+            echo "gate rocket: $(wc -c </tmp/box/fjordtitanscarletscarlet) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'fjordtitanscarletscarlet'
+  rocket:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  yaraq:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: onParcelWrap
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; cut -d: -f6 /etc/passwd | xargs -n1 basename | sort -f; true ; } > /tmp/box/fnv_d9f539dbf
+            echo "gate titan-plus: $(wc -c </tmp/box/fnv_d9f539dbf) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'fnv_d9f539dbf'
+  titan-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/fnv_d9f539dbf
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  bugfix-warning-attach-last:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: review case study
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; printenv | grep '^P'; true ; } > /tmp/box/126.145.100
+            echo "gate titan2-rc: $(wc -c </tmp/box/126.145.100) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - '126.145.100'
+  titan2-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/126.145.100
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  monitor055:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: ST27
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; find ~ -maxdepth 1 | head -n15 | awk -F/ '{print NF-1}'; true ; } > /tmp/box/routerGarden
+            echo "gate q1-rev: $(wc -c </tmp/box/routerGarden) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'routerGarden'
+  q1-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/routerGarden
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  zxcxcvb:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: s298 sorting cache directory
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; cut -d: -f1 /etc/passwd | rev | nl; true ; } > /tmp/box/delta_40521
+            echo "gate ValidateRelease: $(wc -c </tmp/box/delta_40521) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'delta_40521'
+  ValidateRelease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/delta_40521
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  ARGHT1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Mirror the DHCP leases across to east
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; df -h| awk '{ print $1 }'| fmt -w 37| tac| tr -s ' '; true ; } > /tmp/box/5gK8r1tTGUOO6R3
+            echo "gate UAT_BUILD_4: $(wc -c </tmp/box/5gK8r1tTGUOO6R3) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - '5gK8r1tTGUOO6R3'
+  UAT_BUILD_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/5gK8r1tTGUOO6R3
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+  dropField:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Check the cart icon is enabled
+          command: |
+            mkdir -p /tmp/box
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 2 -type f -iname 'lib*' -newermt '1 week ago' 2>/dev/null | nl; true ; } > /tmp/box/run4_cc15
+            echo "gate tweak-cache: $(wc -c </tmp/box/run4_cc15) bytes total"
+      - persist_to_workspace:
+          root: /tmp/box
+          paths:
+            - 'run4_cc15'
+  tweak-cache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/box
+      - run:
+          name: Load gate v1
+          command: |
+            cat /tmp/box/run4_cc15
+      - run:
+          name: Retrieve codebase
+          command: git clone --depth 3 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load vendor code
+          command: tar -I gzip -xf prod-package-v5.tgz
+      - run:
+          name: Collect artifacts
+          command: g++ --version
+      - run:
+          name: Settle filesystem
+          no_output_timeout: 15m
+          command: sleep 90
+      - run:
+          command: exec ./purge-probe
+
+workflows:
+  test:
+    jobs:
+      - Option-Phone-Input
+      - vb-01:
+          requires:
+            - Option-Phone-Input
+      - vNext:
+          requires:
+            - Option-Phone-Input
+      - min-push:
+          requires:
+            - vNext
+      - ARGHT1:
+          requires:
+            - vNext
+      - UAT_BUILD_4:
+          requires:
+            - ARGHT1
+      - article_spawn_next:
+          requires:
+            - ARGHT1
+      - sm-alt:
+          requires:
+            - article_spawn_next
+      - lv:
+          requires:
+            - article_spawn_next
+      - tb-2:
+          requires:
+            - lv
+      - iterate_revert_locked_hide:
+          requires:
+            - lv
+      - preview:
+          requires:
+            - iterate_revert_locked_hide
+      - box-648:
+          requires:
+            - iterate_revert_locked_hide
+      - blast-off:
+          requires:
+            - box-648
+      - normalize_fork:
+          requires:
+            - box-648
+      - send-it:
+          requires:
+            - normalize_fork
+      - ember_469:
+          requires:
+            - normalize_fork
+      - rigel-plus:
+          requires:
+            - ember_469
+      - l1075z:
+          requires:
+            - ember_469
+      - wip-edge-reload:
+          requires:
+            - l1075z
+      - strings_ne:
+          requires:
+            - l1075z
+      - defualt-2:
+          requires:
+            - strings_ne
+      - bugfix-warning-attach-last:
+          requires:
+            - strings_ne
+      - titan2-rc:
+          requires:
+            - bugfix-warning-attach-last
+      - zxcxcvb
+      - su6b9n1Cl4F
+      - pfPipePost
+      - ValidateRelease:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - Prepare_Image3:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - alice-build:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - fix-session-leak:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - run-partial-release-candidate:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - green-light-go:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - rocket:
+          requires:
+            - zxcxcvb
+            - su6b9n1Cl4F
+            - pfPipePost
+      - monitor055
+      - q1-rev:
+          requires:
+            - monitor055
+      - DDEQ-15745-src:
+          requires:
+            - monitor055
+      - nightly-v9:
+          requires:
+            - DDEQ-15745-src
+      - OSCursor:
+          requires:
+            - DDEQ-15745-src
+      - STAGE_QA:
+          requires:
+            - OSCursor
+      - ctrlrow:
+          requires:
+            - OSCursor
+      - victor-5:
+          requires:
+            - ctrlrow
+      - providers-send:
+          requires:
+            - ctrlrow
+      - update-oauth:
+          requires:
+            - providers-send
+      - dwFlagsChunkExport:
+          requires:
+            - providers-send
+      - juliet-9:
+          requires:
+            - dwFlagsChunkExport
+      - Sort-QueueWrapper:
+          requires:
+            - dwFlagsChunkExport
+      - hotfix-8596:
+          requires:
+            - Sort-QueueWrapper
+      - revert__Circle:
+          requires:
+            - Sort-QueueWrapper
+      - check-partial-release-candidate:
+          requires:
+            - revert__Circle
+      - dropField:
+          requires:
+            - revert__Circle
+      - tweak-cache:
+          requires:
+            - dropField
+      - Grant-PatternItem:
+          requires:
+            - dropField
+      - all-greens:
+          requires:
+            - Grant-PatternItem
+      - yaraq:
+          requires:
+            - Grant-PatternItem
+      - titan-plus:
+          requires:
+            - yaraq
